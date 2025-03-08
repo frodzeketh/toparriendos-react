@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { localidades } from "../data/localidades"; // Importa las localidades
+// src/components/SearchInput.jsx
+import React, { useState } from "react";
+import { localidades } from "../data/localidades"; // Ruta correcta para localidades
 
 const SearchInput = ({ onSearch, selectedOption, onOptionSelect, isMobile }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -7,7 +8,7 @@ const SearchInput = ({ onSearch, selectedOption, onOptionSelect, isMobile }) => 
   // Función para manejar la búsqueda
   const handleSearch = () => {
     if (searchTerm.trim() !== "") {
-      onSearch(searchTerm); // Pasa el término de búsqueda al handler
+      onSearch(searchTerm); // Pasa el término de búsqueda al handler en Home.jsx
     }
   };
 
@@ -73,7 +74,9 @@ const SearchInput = ({ onSearch, selectedOption, onOptionSelect, isMobile }) => 
             <option key={index} value={localidad} />
           ))}
         </datalist>
-        <button className="search-button" onClick={handleSearch}>Buscar</button>
+        <button className="search-button" onClick={handleSearch}>
+          Buscar
+        </button>
       </div>
     </div>
   );
