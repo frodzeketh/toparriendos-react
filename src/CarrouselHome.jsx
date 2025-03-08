@@ -1,5 +1,6 @@
+// src/components/CarouselHome.js
 import React, { useState, useEffect } from "react";
-import { db } from "./firebase"; // Asegúrate de que esta ruta esté correcta
+import { dbCarrousel } from "./firebase"; // Importa dbCarrousel en lugar de db
 import { collection, getDocs } from "firebase/firestore";
 
 const CarouselHome = () => {
@@ -10,7 +11,7 @@ const CarouselHome = () => {
     const fetchProperties = async () => {
       try {
         // Obtener todos los documentos de la colección "052431"
-        const querySnapshot = await getDocs(collection(db, "052431"));
+        const querySnapshot = await getDocs(collection(dbCarrousel, "052431")); // Usa dbCarrousel
 
         if (!querySnapshot.empty) {
           const data = querySnapshot.docs.map((doc) => doc.data());

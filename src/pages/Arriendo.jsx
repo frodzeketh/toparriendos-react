@@ -1,7 +1,7 @@
 // src/pages/Arriendo.jsx
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { db } from "../firebase";
+import { dbPropiedades } from "../firebase"; // Cambia db por dbPropiedades
 import { collection, query, where, getDocs } from "firebase/firestore";
 import CardAlquiler from "../components/CardAlquiler";
 
@@ -18,7 +18,7 @@ const Arriendo = () => {
     const fetchPropiedades = async () => {
       // Construir la consulta
       const q = query(
-        collection(db, "propiedades"),
+        collection(dbPropiedades, "propiedades"), // Usa dbPropiedades
         where("tipo", "==", "arriendo"),
         where("ubicacion", "==", localidad)
       );

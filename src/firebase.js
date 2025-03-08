@@ -29,11 +29,12 @@ const firebaseConfigPropiedades = {
 // Inicializar la primera app (para el carrusel)
 const appCarrousel = initializeApp(firebaseConfigCarrousel, "carrousel");
 const analyticsCarrousel = getAnalytics(appCarrousel);
+const dbCarrousel = getFirestore(appCarrousel); // Firestore para el carrusel
 
 // Inicializar la segunda app (para las propiedades)
 const appPropiedades = initializeApp(firebaseConfigPropiedades, "propiedades");
-const db = getFirestore(appPropiedades); // Firestore para las propiedades
+const dbPropiedades = getFirestore(appPropiedades); // Firestore para las propiedades
 const auth = getAuth(appPropiedades); // Authentication (si lo necesitas)
 
 // Exportar todo
-export { appCarrousel, analyticsCarrousel, db, auth };
+export { appCarrousel, analyticsCarrousel, dbCarrousel, dbPropiedades, auth };
