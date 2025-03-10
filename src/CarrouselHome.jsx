@@ -1,7 +1,8 @@
 // src/components/CarouselHome.js
 import React, { useState, useEffect } from "react";
-import { dbCarrousel } from "./firebase"; // Importa dbCarrousel en lugar de db
-import { collection, getDocs } from "firebase/firestore";
+import { dbPropiedades } from "./firebase"; // Importa dbPropiedades
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { Link } from "react-router-dom"; // Importa Link para la navegación
 
 const CarouselHome = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -10,8 +11,10 @@ const CarouselHome = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        // Obtener todos los documentos de la colección "052431"
-        const querySnapshot = await getDocs(collection(dbCarrousel, "052431")); // Usa dbCarrousel
+        // Obtener solo propiedades de tipo "arriendo"
+        const propiedadesRef = collection(dbPropiedades, "propiedades");
+        const q = query(propiedadesRef, where("tipo", "==", "arriendo")); // Filtra por tipo "arriendo"
+        const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
           const data = querySnapshot.docs.map((doc) => doc.data());
@@ -42,7 +45,7 @@ const CarouselHome = () => {
 
   return (
     <div className="container-home">
-      <h1 className="section-title">Encuentra casas y departamentos en arriendo y venta</h1>
+      <h1 className="section-title">Encuentra casas y departamentos en arriendo</h1>
       <div className="tabs">
         <button className="tab active">Arriendos</button>
       </div>
@@ -59,27 +62,31 @@ const CarouselHome = () => {
             <p>Cargando propiedades...</p> // Mensaje en caso de que no haya propiedades cargadas
           ) : (
             properties.map((property, index) => (
-              <a
-                href={`./pages/propiedades/propiedad${property.id}.html`} // Enlazamos al documento por ID, corregido
+              <Link
+                to={`/propiedad/${property.id}`} // Usa el id para redirigir a la página de detalles
                 className="property-card"
                 key={index}
               >
                 <div className="property-image">
                   <img
-                    src={property.img}
-                    alt={`Propiedad en ${property.location}`} // Corregir alt text
+                    src={property.imagenes[0]} // Usa la primera imagen del array de imágenes
+                    alt={`Propiedad en ${property.ubicacion}`} // Corregir alt text
                     className="property-img"
                   />
                 </div>
                 <div className="property-content">
-                  <div className="property-type">{property.type}</div>
+                  <div className="property-type">
+                    {property.estiloInm} {/* Muestra "Departamento" o "Casa" */}
+                  </div>
                   <div className="property-price">{property.price}</div>
-                  <div className="property-location">{property.location}</div>
-                  <div className="property-status">
-                    <span>{property.status}</span>
+                  <div className="property-description">
+                    {property.descripcionCarrousel} {/* Muestra la descripción del carrusel */}
+                  </div>
+                  <div className="property-location">
+                    {property.direccion}, {property.ubicacion} {/* Muestra dirección y localidad */}
                   </div>
                 </div>
-              </a>
+              </Link>
             ))
           )}
         </div>
