@@ -1,6 +1,7 @@
 // src/pages/Comprar.jsx
 import React, { useState, useEffect } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { useLocation } from "react-router-dom";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { dbPropiedades } from "../firebase";
 import CardAlquiler from "../components/CardAlquiler";
 import "../global.css";
@@ -8,13 +9,23 @@ import "../global.css";
 const Comprar = () => {
   const [propiedades, setPropiedades] = useState([]);
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
+
+  // Obtener el parámetro de localidad de la URL
+  const searchParams = new URLSearchParams(location.search);
+  const localidad = searchParams.get("localidad");
 
   useEffect(() => {
     const fetchPropiedades = async () => {
       try {
-        // Obtener solo propiedades de tipo "venta"
+        // Consulta a Firebase
         const propiedadesRef = collection(dbPropiedades, "propiedades");
-        const q = query(propiedadesRef, where("tipo", "==", "venta"));
+        const q = query(
+          propiedadesRef,
+          where("tipo", "==", "venta"), // Filtra por tipo "venta"
+          where("ubicacion", "==", localidad) // Filtra por localidad
+        );
+
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
@@ -30,8 +41,12 @@ const Comprar = () => {
       }
     };
 
-    fetchPropiedades();
-  }, []);
+    if (localidad) {
+      fetchPropiedades();
+    } else {
+      setLoading(false);
+    }
+  }, [localidad]);
 
   if (loading) {
     return <div>Cargando propiedades...</div>;
@@ -39,7 +54,7 @@ const Comprar = () => {
 
   return (
     <div className="comprar-page">
-      <h1 className="page-title">Propiedades en Venta</h1>
+      <h1 className="page-title">Propiedades en Venta en {localidad}</h1>
       <div className="cards-container">
         {propiedades.length === 0 ? (
           <p>No hay propiedades disponibles.</p>

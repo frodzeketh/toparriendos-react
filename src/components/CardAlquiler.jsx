@@ -59,7 +59,9 @@ const CardAlquiler = ({ propiedad }) => {
             <p className="card-alquiler-location">
               + Gastos comunes aproximados ${propiedad.gastosComunes || "N/A"}
             </p>
-            <p className="card-alquiler-expenses">{propiedad.direccion}</p>
+            <p className="card-alquiler-expenses">
+              {propiedad.direccion}, {propiedad.ubicacion} {/* Muestra dirección y localidad */}
+            </p>
             <div className="card-alquiler-info">
               <div className="card-alquiler-icons">
                 <div>
