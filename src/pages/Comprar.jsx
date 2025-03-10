@@ -1,53 +1,48 @@
 // src/pages/Comprar.jsx
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { dbPropiedades } from "../firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
 import CardAlquiler from "../components/CardAlquiler";
+import "../global.css";
 
 const Comprar = () => {
   const [propiedades, setPropiedades] = useState([]);
-  const location = useLocation();
+  const [loading, setLoading] = useState(true);
 
-  // Obtener la localidad desde la URL
-  const queryParams = new URLSearchParams(location.search);
-  const localidad = queryParams.get("localidad");
-
-  // Consultar Firebase
   useEffect(() => {
     const fetchPropiedades = async () => {
-      // Construir la consulta
-      const q = query(
-        collection(dbPropiedades, "propiedades"),
-        where("tipo", "==", "venta"), // Filtra por propiedades en venta
-        where("ubicacion", "==", localidad)
-      );
+      try {
+        // Obtener solo propiedades de tipo "venta"
+        const propiedadesRef = collection(dbPropiedades, "propiedades");
+        const q = query(propiedadesRef, where("tipo", "==", "venta"));
+        const querySnapshot = await getDocs(q);
 
-      // Ejecutar la consulta
-      const querySnapshot = await getDocs(q);
-      const propiedadesData = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-
-      // Depuración: Ver los datos obtenidos
-      console.log("Propiedades obtenidas:", propiedadesData);
-
-      // Actualizar el estado con las propiedades obtenidas
-      setPropiedades(propiedadesData);
+        if (!querySnapshot.empty) {
+          const data = querySnapshot.docs.map((doc) => doc.data());
+          setPropiedades(data);
+        } else {
+          console.log("No se encontraron propiedades en venta.");
+        }
+      } catch (error) {
+        console.error("Error fetching propiedades:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    if (localidad) {
-      fetchPropiedades();
-    }
-  }, [localidad]);
+    fetchPropiedades();
+  }, []);
+
+  if (loading) {
+    return <div>Cargando propiedades...</div>;
+  }
 
   return (
-    <div>
-      <h1>Propiedades en Venta - {localidad}</h1>
-      <div className="propiedades-list">
+    <div className="comprar-page">
+      <h1 className="page-title">Propiedades en Venta</h1>
+      <div className="cards-container">
         {propiedades.length === 0 ? (
-          <p>No hay propiedades disponibles en venta para {localidad}.</p>
+          <p>No hay propiedades disponibles.</p>
         ) : (
           propiedades.map((propiedad) => (
             <CardAlquiler key={propiedad.id} propiedad={propiedad} />
