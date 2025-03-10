@@ -26,7 +26,7 @@ const NavBar = () => {
             <Link to="/comprar" className={`navbar-link ${location.pathname === "/comprar" ? "active" : ""}`}>Comprar</Link>
           </li>
           <li className="navbar-item">
-            <Link to="/publica" className={`navbar-link ${location.pathname === "/publica" ? "active" : ""}`}>Publica</Link>
+            <Link to="/publica" className={`navbar-link ${location.pathname === "/publica" ? "active" : ""}`}>Arrendar</Link>
           </li>
           <li className="navbar-item">
             <Link to="/blog" className={`navbar-link ${location.pathname === "/blog" ? "active" : ""}`}>Blog</Link>
@@ -61,7 +61,7 @@ const NavBar = () => {
           <Link to="/" className={`offcanvas-link ${location.pathname === "/" ? "active" : ""}`}>Inicio</Link>
           <Link to="/arriendo" className={`offcanvas-link ${location.pathname === "/arriendo" ? "active" : ""}`}>Arriendo</Link>
           <Link to="/comprar" className={`offcanvas-link ${location.pathname === "/comprar" ? "active" : ""}`}>Comprar</Link>
-          <Link to="/publica" className={`offcanvas-link ${location.pathname === "/publica" ? "active" : ""}`}>Publica</Link>
+          <Link to="/publica" className={`offcanvas-link ${location.pathname === "/publica" ? "active" : ""}`}>Arrendar</Link>
           <Link to="/blog" className={`offcanvas-link ${location.pathname === "/blog" ? "active" : ""}`}>Blog</Link>
           <Link to="/contacto" className={`offcanvas-link ${location.pathname === "/contacto" ? "active" : ""}`}>Contacto</Link>
         </div>

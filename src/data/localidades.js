@@ -23,7 +23,7 @@ export const localidades = [
   "Conchalí, RM (Metropolitana)",
   "San Bernardo, RM (Metropolitana)",
   "Quilicura, RM (Metropolitana)",
-  "Estación Central, RM (Metropolitana)",
+  
   "La Pintana, RM (Metropolitana)",
   "San Ramón, RM (Metropolitana)",
   "Renca, RM (Metropolitana)",

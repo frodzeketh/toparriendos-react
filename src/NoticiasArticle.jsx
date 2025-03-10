@@ -1,4 +1,5 @@
 import React from 'react';
+import noticiaunohome from './img/noticia-1-home.jpg'
 
 const NoticiasArticle = () => {
   return (
@@ -9,7 +10,7 @@ const NoticiasArticle = () => {
 
       <article className="noticias-article">
         <div className="noticias-image">
-          <img src="./img/logo-certificacion-edificio-sustentable.jpg" alt="Certificación de Vivienda Sustentable" />
+        <img src={noticiaunohome} alt="Certificación de Vivienda Sustentable" />
         </div>
         <div className="noticias-content">
           <h2 className="noticias-article-title">

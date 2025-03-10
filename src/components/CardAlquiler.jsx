@@ -1,5 +1,6 @@
 // src/components/CardAlquiler.jsx
 import React from "react";
+import { Link } from "react-router-dom"; // Importa Link desde react-router-dom
 import "../global.css";
 
 const CardAlquiler = ({ propiedad }) => {
@@ -12,7 +13,8 @@ const CardAlquiler = ({ propiedad }) => {
 
   return (
     <div className="card-alquiler-container">
-      <a className="a-none" href={`/propiedad/${propiedad.id}`}>
+      {/* Usa Link en lugar de <a> para la navegación */}
+      <Link to={`/propiedad/${propiedad.id}`} className="a-none">
         <div className="card-alquiler">
           {/* Carrusel de imágenes */}
           <div id={`carouselExample${propiedad.id}`} className="carousel slide" data-bs-ride="carousel">
@@ -55,7 +57,7 @@ const CardAlquiler = ({ propiedad }) => {
           <div className="card-alquiler-content">
             <h2 className="card-alquiler-header">{propiedad.price} CLP</h2>
             <p className="card-alquiler-location">
-              + Gastos comunes aproximados $ {propiedad.gastosComunes || "N/A"}
+              + Gastos comunes aproximados ${propiedad.gastosComunes || "N/A"}
             </p>
             <p className="card-alquiler-expenses">{propiedad.direccion}</p>
             <div className="card-alquiler-info">
@@ -150,7 +152,7 @@ const CardAlquiler = ({ propiedad }) => {
             </div>
           </div>
         </div>
-      </a>
+      </Link> {/* Cierra el componente Link aquí */}
     </div>
   );
 };

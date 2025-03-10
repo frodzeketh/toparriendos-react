@@ -1,11 +1,17 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import logo from "../src/img/logo.png";
+
+
+
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__addr">
         <h1 className="footer__logo">
-          <img src="img/logo-footer.png" alt="Logo" className="logo-footer" />
+        <img className="logo-img" src={logo || "/placeholder.svg"} alt="Logo" />
         </h1>
 
         <h2 className="nav__title">Servicios</h2>
@@ -46,11 +52,11 @@ const Footer = () => {
         <li className="nav__item nav__item--extra">
           <h2 className="nav__title">Redes Sociales</h2>
           <ul className="nav__ul nav__ul--extra">
-            <li>
-              <a href="https://www.instagram.com/toparriendoschile2.0/" target="_blank" rel="noopener noreferrer" className="social-icon">
-                <i className="fab fa-instagram"></i>
-              </a>
-            </li>
+          <li>
+  <a href="https://www.instagram.com/toparriendoschile2.0/" target="_blank" rel="noopener noreferrer" className="social-icon">
+    <FontAwesomeIcon icon={faInstagram} />
+  </a>
+</li>
           </ul>
         </li>
       </ul>

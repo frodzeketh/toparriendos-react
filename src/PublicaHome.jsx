@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 
 const PublicaHome = () => {
   return (
@@ -21,9 +23,10 @@ const PublicaHome = () => {
         </p>
       </div>
 
-      <a href="#" className="publica-button">
-        Publica tu propiedad
-      </a>
+      <Link to="/publica" className="publica-button">
+  Publica tu propiedad
+</Link>
+
     </section>
   );
 };
