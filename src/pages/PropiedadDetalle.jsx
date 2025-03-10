@@ -1,7 +1,6 @@
-// PropiedadDetalle.jsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { dbPropiedades } from "../firebase"; // Asegúrate de importar dbPropiedades
 import "../global.css";
 
@@ -23,18 +22,16 @@ const PropiedadDetalle = () => {
   useEffect(() => {
     const fetchPropiedad = async () => {
       try {
-        const propiedadRef = doc(dbPropiedades, "propiedades", "cards-propiedades");
-        const propiedadDoc = await getDoc(propiedadRef);
+        const propiedadesRef = collection(dbPropiedades, "propiedades");
+        const q = query(propiedadesRef, where("id", "==", id));
+        const querySnapshot = await getDocs(q);
 
-        if (propiedadDoc.exists()) {
-          const propiedades = propiedadDoc.data();
-          if (propiedades.id === id) {
-            setPropiedad(propiedades);
-          } else {
-            console.log("No se encontró la propiedad con el ID:", id);
-          }
+        if (!querySnapshot.empty) {
+          querySnapshot.forEach((doc) => {
+            setPropiedad(doc.data());
+          });
         } else {
-          console.log("No such document!");
+          console.log("No se encontró la propiedad con el ID:", id);
         }
       } catch (error) {
         console.error("Error fetching propiedad:", error);
@@ -143,7 +140,9 @@ const PropiedadDetalle = () => {
               <p className="card-alquiler-expenses">
                 {propiedad.direccion || "Av. Libertador Bernardo O'Higgins 1000, Santiago Centro"}
               </p>
-              <p className="card-alquiler-location">+ {propiedad.gastosComunes || "70.000"} Expensas</p>
+              <p className="card-alquiler-location">
+  + Gastos comunes aproximados ${propiedad.gastosComunes || "70.000"}
+</p>
               <div className="card-alquiler-icons">
                 {/* Íconos */}
                 <div>
