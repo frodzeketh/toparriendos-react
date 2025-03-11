@@ -3454,6 +3454,9 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: #fafafa; /* Color de fondo */
+  
+    overscroll-behavior: none; /* Desactiva el overscroll */
+  
 }
 
 
