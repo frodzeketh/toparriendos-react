@@ -13,6 +13,8 @@ import Contacto from "./pages/Contacto";
 import PropiedadDetalle from "./pages/PropiedadDetalle";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import TyC from "./pages/TyC"; // Importa el nuevo componente
+import Informacion from "./pages/Informacion"; // Importa el nuevo componente
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/propiedad/:id" element={<PropiedadDetalle />} />
         <Route path="/noticia-detalle" element={<NoticiaDetalle />} />
+        <Route path="/tyc" element={<TyC />} /> {/* Nueva ruta */}
+        <Route path="/informacion" element={<Informacion />} /> {/* Nueva ruta */}
       </Routes>
       <Footer />
     </Router>

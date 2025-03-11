@@ -1,5 +1,7 @@
 // src/components/NavBar.jsx
 import { Link, useLocation } from "react-router-dom";
+import { useRef } from "react";
+import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
 import logo from "../src/img/logo.png";
 import logoOffCanvas from "../src/img/logo-off-canvas.png";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,6 +11,19 @@ import "./global.css";
 
 const NavBar = () => {
   const location = useLocation();
+  const leftOffCanvasRef = useRef(null);
+  const rightOffCanvasRef = useRef(null);
+
+  const closeOffCanvas = () => {
+    if (leftOffCanvasRef.current) {
+      const bsOffcanvas = bootstrap.Offcanvas.getInstance(leftOffCanvasRef.current);
+      bsOffcanvas?.hide();
+    }
+    if (rightOffCanvasRef.current) {
+      const bsOffcanvas = bootstrap.Offcanvas.getInstance(rightOffCanvasRef.current);
+      bsOffcanvas?.hide();
+    }
+  };
 
   return (
     <header className="navbar-header">
@@ -51,7 +66,7 @@ const NavBar = () => {
       </nav>
 
       {/* Left Offcanvas Menu */}
-      <div className="offcanvas offcanvas-start" data-bs-backdrop="static" tabIndex={-1} id="leftOffcanvas" aria-labelledby="leftOffcanvasLabel">
+      <div ref={leftOffCanvasRef} className="offcanvas offcanvas-start" data-bs-backdrop="static" tabIndex={-1} id="leftOffcanvas" aria-labelledby="leftOffcanvasLabel">
         <div className="offcanvas-header">
           <h1 className="offcanvas-logo">
             <img src={logoOffCanvas || "/placeholder.svg"} alt="Logo" className="offcanvas-logo-img" />
@@ -59,17 +74,17 @@ const NavBar = () => {
           <button type="button" className="btn-close close-btn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body offcanvas-links">
-          <Link to="/" className={`offcanvas-link ${location.pathname === "/" ? "active" : ""}`}>Inicio</Link>
-          <Link to="/arriendo" className={`offcanvas-link ${location.pathname === "/arriendo" ? "active" : ""}`}>Arriendo</Link>
-          <Link to="/comprar" className={`offcanvas-link ${location.pathname === "/comprar" ? "active" : ""}`}>Comprar</Link>
-          <Link to="/publica" className={`offcanvas-link ${location.pathname === "/publica" ? "active" : ""}`}>Arrendar</Link>
-          <Link to="/blog" className={`offcanvas-link ${location.pathname === "/blog" ? "active" : ""}`}>Blog</Link>
-          <Link to="/contacto" className={`offcanvas-link ${location.pathname === "/contacto" ? "active" : ""}`}>Contacto</Link>
+          <Link to="/" className="offcanvas-link" onClick={closeOffCanvas}>Inicio</Link>
+          <Link to="/arriendo" className="offcanvas-link" onClick={closeOffCanvas}>Arriendo</Link>
+          <Link to="/comprar" className="offcanvas-link" onClick={closeOffCanvas}>Comprar</Link>
+          <Link to="/publica" className="offcanvas-link" onClick={closeOffCanvas}>Arrendar</Link>
+          <Link to="/blog" className="offcanvas-link" onClick={closeOffCanvas}>Blog</Link>
+          <Link to="/contacto" className="offcanvas-link" onClick={closeOffCanvas}>Contacto</Link>
         </div>
       </div>
 
       {/* Right Offcanvas Menu */}
-      <div className="offcanvas offcanvas-end" tabIndex={-1} id="rightOffcanvas" aria-labelledby="rightOffcanvasLabel">
+      <div ref={rightOffCanvasRef} className="offcanvas offcanvas-end" tabIndex={-1} id="rightOffcanvas" aria-labelledby="rightOffcanvasLabel">
         <div className="offcanvas-header">
           <h1 className="offcanvas-logo">
             <img src={logoOffCanvas || "/placeholder.svg"} alt="Logo" className="offcanvas-logo-img" />
