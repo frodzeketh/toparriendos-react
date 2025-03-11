@@ -3449,18 +3449,12 @@
 
 
 
-* {
+html, body {
+  height: 100%; /* Ocupa toda la altura de la ventana */
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  background-color: #fafafa; /* Color de fondo */
 }
-
-body {
-  background-color: #fafafa !important;
-  margin: 0;
-  padding: 0;
-}
-
 
 
 
