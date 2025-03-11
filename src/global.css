@@ -2623,6 +2623,11 @@
     gap: 1.5rem;
   }
 
+
+
+  
+
+
   .card-arrendar {
     width: 220px;
     height: 220px;
@@ -2669,6 +2674,9 @@
     max-width: 280px;
     height: 180px;
   }
+
+  
+
 }
 
 
@@ -2774,7 +2782,7 @@
   
   border: 1px solid #ddd;
   border-radius: 8px;
-  height: 400px;
+  height: 400px !important;
   padding: 16px !important;
 }
 
@@ -2953,7 +2961,11 @@
 
 
 
-
+@media (max-width: 768px) {
+  #carouselExampleIndicators {
+    height: 300px !important; /* Altura fija de 200px en móviles */
+  }
+}
 
 
 
@@ -3465,3 +3477,659 @@ html, body {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos generales */
+.container-maps {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+/* Columna Izquierda */
+.titulo-precio {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.detalles-propiedad {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.detalles-item i {
+  color: #555;
+}
+
+/* Descripción */
+.card-descripcion {
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.titulo-descripcion {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.descripcion-texto {
+  color: #666;
+}
+
+.boton-ver-mas {
+  color: #0066cc;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+/* Características */
+.card-caracteristicas {
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+/* Ubicación */
+.card-ubicacion {
+ 
+  margin-top: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.titulo-ubicacion {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+}
+
+/* Columna Derecha */
+.card-financiamiento {
+  background-color: #f8fafb;
+  border: 1px solid #32bdbd33;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.financiamiento-info {
+  color: #0066cc;
+}
+
+.card-contacto {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.foto-contacto img {
+  border-radius: 50%;
+}
+
+.input-contacto,
+.textarea-contacto {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.btn-enviar {
+  background-color: #0066cc;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.opciones-contacto .btn-phone,
+.opciones-contacto .btn-email,
+.opciones-contacto .btn-whatsapp {
+  background: none;
+  border: none;
+  color: #666;
+}
+
+.btn-whatsapp {
+  color: #25d366; /* Verde de WhatsApp */
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+  .container-maps {
+    grid-template-columns: 1fr;
+  }
+
+  .map-container iframe {
+    height: 200px;
+  }
+
+  .detalles-propiedad {
+    gap: 8px;
+  }
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  #carouselExampleIndicators {
+    height: 300px !important; /* Altura fija de 200px en móviles */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Ajuste para el layout de grid */
+.nofunca {
+  margin: 28px;
+}
+
+.grid-lg-cols-\[2fr\,1fr\] {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Asegurarse de que el grid funcione correctamente en pantallas grandes */
+@media (min-width: 992px) {
+  .grid-lg-cols-\[2fr\,1fr\] {
+    grid-template-columns: 2fr 1fr;
+    grid-auto-flow: row dense;
+  }
+
+  /* Controlar el orden y posición de los elementos */
+  .card-descripcion:first-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .card-descripcion:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .card-ubicacion:nth-child(3) {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .card-ubicacion-contact:nth-child(4) {
+    grid-column: 2;
+    grid-row: 1 / span 1;
+  }
+}
+
+/* Asegurarse de que las tarjetas ocupen todo el ancho disponible */
+.card-descripcion,
+.card-ubicacion {
+  margin-top: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.card-descripcion,
+.card-ubicacion-contact {
+  margin-top: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .nofunca {
+    margin: 20px; /* Menos margen en pantallas pequeñas */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card-alquiler-contact-buttons-detalle .card-alquiler-wsp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #25D267;
+  color: white;
+  border: 0px;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  width: 120px;
+}
+
+
+
+
+
+
+
+
+.card-alquiler-contact-button-detalles a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: solid 1px #0908a4;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.card-alquiler-footer-detalle {
+  display: flex;
+  flex-direction: column; /* Acomoda los elementos en columna */
+  
+  gap: 10px; /* Espacio entre los elementos */
+  justify-content: start !important;
+}
+
+
+.icono-cards {
+  fill: #0908a4;
+  width: 16px;
+  height: 16px;
+}
+
+.card-alquiler-contact-buttons-detalle {
+  display: flex;
+  
+  justify-content: start;
+  display: flex;
+  justify-content: start;
+  gap: 17px;
+  align-items: center;
+
+}
+
+.card-alquiler-contact-buttons-detalle a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: solid 1px #0908a4;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+
+
+
+.card-alquiler-footer-detalle .card-alquiler-agent-info-detalle {
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Para responsive en móviles */
+@media (max-width: 768px) {
+  .card-alquiler-contact-buttons-detalle {
+    display: flex;
+    
+    justify-content: start;
+    display: flex;
+    justify-content: start;
+    gap: 17px;
+    align-items: center;
+
+  }
+  
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

@@ -131,7 +131,7 @@ const PropiedadDetalle = () => {
         </button>
       </div>
 
-      <div className="container-maps mx-auto p-4">
+      <div className="nofunca">
         <div className="grid-lg-cols-[2fr,1fr] gap-6">
           {/* Columna Izquierda */}
           <div className="card-descripcion">
@@ -230,13 +230,13 @@ const PropiedadDetalle = () => {
           </div>
 
           {/* Contacto */}
-          <div className="card-ubicacion">
+          <div className="card-ubicacion-contact">
             <div className="header-ubicacion">
               <h2 className="card-alquiler-header">Contacto</h2>
             </div>
             <div className="contenido-ubicacion p-4">
-              <div className="card-alquiler-footer">
-                <div className="card-alquiler-agent-info">
+              <div className="card-alquiler-footer-detalle">
+                <div className="card-alquiler-agent-info-detalle">
                   <img
                     src={propiedad.agenteImagen || "../img/casa1.jpeg"}
                     alt="Agente"
@@ -248,7 +248,7 @@ const PropiedadDetalle = () => {
                   </div>
                 </div>
 
-                <div className="card-alquiler-contact-buttons">
+                <div className="card-alquiler-contact-buttons-detalle">
                   {/* WhatsApp */}
                   <a
                     href={`https://wa.me/${propiedad.agenteWhatsapp || "56972147166"}?text=Hola%20Top%20Arriendos,%20estoy%20interesado%20en%20esta%20propiedad%20en%20arriendo.%20%C2%BFSigue%20disponible?`}
