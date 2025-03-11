@@ -18,7 +18,7 @@ function Contacto() {
     <main className="contacto-main">
       <h1 className="page-title">Publica tu Propiedad</h1>
 
-      {localidadSeleccionada && <h2>Vende tu propiedad en: {localidadSeleccionada}</h2>}
+      {localidadSeleccionada && <h2 className="page-title">Vende tu propiedad en: {localidadSeleccionada}</h2>}
 
       <div className="contact-form-container">
         <form className="contact-form">

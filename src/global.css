@@ -373,7 +373,7 @@
 
 .search-input-container input {
   flex: 1;
-  padding: 1rem;
+  padding: 17px;
   border: none;
   border-radius: 4px;
   font-size: 1.4rem;
@@ -431,7 +431,8 @@
   }
 
   .search-input-container input {
-    padding: 0.75rem;
+    padding: 17px;
+    font-size: 17px;
   }
 
   .search-input-container button {
@@ -528,7 +529,17 @@
 
 @media (max-width: 768px) {
   .search-input-container input {
-    font-size: 1rem;  /* Reduce el tamaño de fuente en móviles */
+    font-size: 17px;  /* Reduce el tamaño de fuente en móviles */
+    /* Reduce el tamaño de fuente en móviles */
+    /* Reduce el tamaño de fuente en móviles */
+    /* Reduce el tamaño de fuente en móviles */
+    /* Reduce el tamaño de fuente en móviles */
+    /* Reduce el tamaño de fuente en móviles */
+    /* Reduce el tamaño de fuente en móviles */
+    /* Reduce el tamaño de fuente en móviles */
+    /* Reduce el tamaño de fuente en móviles */
+
+    /* Reduce el tamaño de fuente en móviles */
     
   }
 }
@@ -3408,9 +3419,10 @@
 .form-input,
 .form-textarea {
   padding: 0.75rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid #f5f5f5;
+  border-radius: 8px;
   border-radius: var(--border-radius);
-  font-size: 1rem;
+  font-size: 17px;
 }
 
 .form-textarea {
@@ -3420,10 +3432,10 @@
 
 .form-submit-button {
   padding: 1rem;
-  background-color: var(--color-primary);
+  background-color: #0053B3;
   color: white;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: 8px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
@@ -3448,3 +3460,11 @@ body {
   margin: 0;
   padding: 0;
 }
+
+
+
+
+
+
+
+
