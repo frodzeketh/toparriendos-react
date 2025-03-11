@@ -3433,3 +3433,18 @@
 .form-submit-button:hover {
   background-color: var(--color-primary-hover);
 }
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fafafa !important;
+  margin: 0;
+  padding: 0;
+}

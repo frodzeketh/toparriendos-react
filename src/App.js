@@ -1,4 +1,3 @@
-// App.js
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import NoticiaDetalle from './NoticiaDetalle'; // Asegúrate de que este archivo exista
@@ -15,10 +14,12 @@ import NavBar from "./NavBar";
 import Footer from "./Footer";
 import TyC from "./pages/TyC"; // Importa el nuevo componente
 import Informacion from "./pages/Informacion"; // Importa el nuevo componente
+import ScrollToTop from "./components/ScrollToTop"; // Importa el componente ScrollToTop
 
 function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* Agrega el componente ScrollToTop aquí */}
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
