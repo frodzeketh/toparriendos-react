@@ -16,7 +16,7 @@ function Contacto() {
 
   return (
     <main className="contacto-main">
-      <h1>Publica tu Propiedad</h1>
+      <h1 className="page-title">Publica tu Propiedad</h1>
 
       {localidadSeleccionada && <h2>Vende tu propiedad en: {localidadSeleccionada}</h2>}
 

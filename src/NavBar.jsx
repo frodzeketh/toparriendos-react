@@ -1,3 +1,4 @@
+// src/components/NavBar.jsx
 import { Link, useLocation } from "react-router-dom";
 import logo from "../src/img/logo.png";
 import logoOffCanvas from "../src/img/logo-off-canvas.png";

@@ -5,11 +5,16 @@ import "../global.css";
 
 const CardAlquiler = ({ propiedad }) => {
   if (!propiedad) {
-    return <div>Error: Propiedad no definida</div>;
+    return <div className="page-title">Error: Propiedad no definida</div>;
   }
 
   // Verifica si hay imágenes en propiedad.imagenes
   const imagenes = propiedad.imagenes || [];
+
+  // Función para detener la propagación del evento
+  const handleButtonClick = (e) => {
+    e.stopPropagation();
+  };
 
   return (
     <div className="card-alquiler-container">
@@ -124,11 +129,16 @@ const CardAlquiler = ({ propiedad }) => {
               <a
                 href={`https://wa.me/${propiedad.agenteWhatsapp}?text=Hola, estoy interesado en esta propiedad.`}
                 className="card-alquiler-wsp"
+                onClick={handleButtonClick} // Detener la propagación del evento
               >
                 <i className="bx bxl-whatsapp icono-wsp"></i>
                 <span className="text-botton-wsp">WhatsApp</span>
               </a>
-              <a href={`tel:${propiedad.agenteTelefono}`} className="card-alquiler-phone">
+              <a
+                href={`tel:${propiedad.agenteTelefono}`}
+                className="card-alquiler-phone"
+                onClick={handleButtonClick} // Detener la propagación del evento
+              >
                 <svg
                   className="icono-cards"
                   xmlns="http://www.w3.org/2000/svg"
@@ -141,6 +151,7 @@ const CardAlquiler = ({ propiedad }) => {
               <a
                 href={`mailto:${propiedad.agenteEmail}`}
                 className="card-alquiler-email"
+                onClick={handleButtonClick} // Detener la propagación del evento
               >
                 <svg
                   className="icono-cards"

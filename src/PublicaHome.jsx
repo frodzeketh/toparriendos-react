@@ -1,16 +1,12 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-
+import logo from "../src/img/logo.png";
 
 const PublicaHome = () => {
   return (
     <section className="main-publica">
       <div className="publica-left">
-        <img
-          src="./img/logo-sinfondo.png"
-          alt="Ícono de propiedad"
-          className="publica-icon"
-        />
+        
         <h2 className="publica-title">¡Publica con nosotros!</h2>
       </div>
 

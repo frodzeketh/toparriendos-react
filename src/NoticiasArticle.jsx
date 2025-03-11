@@ -1,5 +1,6 @@
 import React from 'react';
-import noticiaunohome from './img/noticia-1-home.jpg'
+import { Link } from 'react-router-dom';
+import noticiaunohome from './img/noticia-1-home.jpg';
 
 const NoticiasArticle = () => {
   return (
@@ -10,7 +11,7 @@ const NoticiasArticle = () => {
 
       <article className="noticias-article">
         <div className="noticias-image">
-        <img src={noticiaunohome} alt="Certificación de Vivienda Sustentable" />
+          <img src={noticiaunohome} alt="Certificación de Vivienda Sustentable" />
         </div>
         <div className="noticias-content">
           <h2 className="noticias-article-title">
@@ -23,7 +24,7 @@ const NoticiasArticle = () => {
             Vivienda y Urbanismo está preparando la entrada en operación de una nueva versión del instrumento. Esto, con
             el fin de incorporar cambios en materia de administración, en su estructura y en los requisitos de validación.
           </p>
-          <a href="#" className="noticias-read-more">Leer más</a>
+          <Link to="/noticia-detalle" className="noticias-read-more">Leer más</Link>
         </div>
       </article>
     </div>

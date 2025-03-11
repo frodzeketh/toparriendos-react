@@ -20,11 +20,19 @@ const Comprar = () => {
       try {
         // Consulta a Firebase
         const propiedadesRef = collection(dbPropiedades, "propiedades");
-        const q = query(
-          propiedadesRef,
-          where("tipo", "==", "venta"), // Filtra por tipo "venta"
-          where("ubicacion", "==", localidad) // Filtra por localidad
-        );
+        let q;
+
+        if (localidad) {
+          // Filtrar por tipo "venta" y localidad
+          q = query(
+            propiedadesRef,
+            where("tipo", "==", "venta"),
+            where("ubicacion", "==", localidad)
+          );
+        } else {
+          // Filtrar solo por tipo "venta"
+          q = query(propiedadesRef, where("tipo", "==", "venta"));
+        }
 
         const querySnapshot = await getDocs(q);
 
@@ -41,23 +49,23 @@ const Comprar = () => {
       }
     };
 
-    if (localidad) {
-      fetchPropiedades();
-    } else {
-      setLoading(false);
-    }
+    fetchPropiedades();
   }, [localidad]);
 
   if (loading) {
-    return <div>Cargando propiedades...</div>;
+    return <div className="page-title">Cargando propiedades...</div>;
   }
 
   return (
     <div className="comprar-page">
-      <h1 className="page-title">Propiedades en Venta en {localidad}</h1>
+      <h1 className="page-title">
+        {localidad
+          ? `Propiedades en Venta en ${localidad}`
+          : "Todas las propiedades en venta"}
+      </h1>
       <div className="cards-container">
         {propiedades.length === 0 ? (
-          <p>No hay propiedades disponibles.</p>
+          <p className="page-title">No hay propiedades disponibles.</p>
         ) : (
           propiedades.map((propiedad) => (
             <CardAlquiler key={propiedad.id} propiedad={propiedad} />

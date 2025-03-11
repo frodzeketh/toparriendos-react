@@ -20,11 +20,19 @@ const Arriendo = () => {
       try {
         // Consulta a Firebase
         const propiedadesRef = collection(dbPropiedades, "propiedades");
-        const q = query(
-          propiedadesRef,
-          where("tipo", "==", "arriendo"), // Filtra por tipo "arriendo"
-          where("ubicacion", "==", localidad) // Filtra por localidad
-        );
+        let q;
+
+        if (localidad) {
+          // Filtrar por tipo "arriendo" y localidad
+          q = query(
+            propiedadesRef,
+            where("tipo", "==", "arriendo"),
+            where("ubicacion", "==", localidad)
+          );
+        } else {
+          // Filtrar solo por tipo "arriendo"
+          q = query(propiedadesRef, where("tipo", "==", "arriendo"));
+        }
 
         const querySnapshot = await getDocs(q);
 
@@ -41,23 +49,23 @@ const Arriendo = () => {
       }
     };
 
-    if (localidad) {
-      fetchPropiedades();
-    } else {
-      setLoading(false);
-    }
+    fetchPropiedades();
   }, [localidad]);
 
   if (loading) {
-    return <div>Cargando propiedades...</div>;
+    return <div className="page-title">Cargando propiedades...</div>;
   }
 
   return (
     <div className="arriendo-page">
-      <h1 className="page-title">Propiedades en Arriendo en {localidad}</h1>
+      <h1 className="page-title">
+        {localidad
+          ? `Propiedades en Arriendo en ${localidad}`
+          : "Todas las propiedades en arriendo"}
+      </h1>
       <div className="cards-container">
         {propiedades.length === 0 ? (
-          <p>No hay propiedades disponibles.</p>
+          <p className="page-title">No hay propiedades disponibles.</p>
         ) : (
           propiedades.map((propiedad) => (
             <CardAlquiler key={propiedad.id} propiedad={propiedad} />
