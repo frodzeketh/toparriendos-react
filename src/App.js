@@ -3,6 +3,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import NoticiaDetalle from './NoticiaDetalle'; // Asegúrate de que este archivo exista
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+
+
 import Home from "./Home";
 import Arriendo from "./pages/Arriendo";
 import Comprar from "./pages/Comprar";
