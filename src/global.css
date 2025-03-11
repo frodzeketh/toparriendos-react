@@ -315,150 +315,86 @@
 
 
 /* ===== INPUT O SEARCH HOME ===== */
-:root {
-  --color-primary: #0046a8;
-  --color-primary-hover: #003d8e;
-  --color-secondary: #ffffff;
-  --color-text: #333333;
-  --color-light-gray: #f5f5f5;
-  --color-border: #dddddd;
-  --border-radius: 4px;
-  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
-}
+/* Estilos para los botones de opción */
 
-/* Reseteo básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  color: var(--color-text);
-  line-height: 1.6;
-}
-
-/* Estilos generales */
-.home-container {
-  font-family: "Poppins", sans-serif;
-  width: 100%;
-  min-height: 100vh;
-}
-
-.home-main {
-  font-family: "Poppins", sans-serif;
-  width: 100%;
-}
-
-/* Sección Hero */
-.hero-section {
-  font-family: "Poppins", sans-serif;
-  position: relative;
-  width: 100%;
-  min-height: 300px;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-}
-
-.hero-title {
-  color: var(--color-secondary);
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-}
-
-/* Sección de búsqueda */
 .search-section {
-  width: 100%;
-  max-width: 1024px;
-  background-color: transparent;
-  border-radius: 8px;
-  overflow: hidden;
-  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+  width: 55%;
+  margin: 0 auto; /* Esto centra el contenedor horizontalmente */
 }
 
 .option-buttons {
   display: flex;
-  width: 100%;
-  background-color: white;
-  border-radius: 8px 0 0 0;
+  justify-content: space-around;
+  background-color: transparent;
+  margin-bottom: 10px;
 }
 
 .option-button {
-  width: 100%;
   font-family: "Poppins", sans-serif;
+  flex: 1;
   padding: 1rem;
+  margin: 0 5px;
   border: none;
-  background: #fff;
+  background-color: #fff;
   color: #595959;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
   border-radius: 4px;
-  border: none;
-}
-
-.option-button:last-child {
-  border-right: none;
+  text-align: center;
 }
 
 .option-button:hover {
-  background-color: rgba(0, 83, 179, 0.05);
+  background-color:  #F5F5F5;
 }
 
 .option-button.active {
   background-color: #0053B3;
   color: white;
-  border-bottom: none;
   font-weight: bold;
 }
 
-/* Contenedor del buscador */
+/* Estilos para el contenedor del buscador */
 .search-input-container {
-  max-width: 100%;
-  position: relative;
-  width: 100%;
+  display: flex;
+  align-items: center;
   background-color: white;
-  padding: 10px;
-  border-radius: 0 0 8px 8px;
-  display: flex; /* Alinea el input y el botón en una fila */
+  
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
 }
 
 .search-input-container input {
   flex: 1;
-  padding: 1.2rem 1.5rem;
+  padding: 1rem;
   border: none;
-  border-right: none;
-  border-radius: 4px 0 0 4px;
-  font-size: 1rem;
+  border-radius: 4px;
+  font-size: 1.4rem;
   outline: none;
   background-color: #f5f5f5;
-  height: 48px; /* Ajusta la altura para que coincida con el botón */
 }
 
-.search-input-container input::placeholder {
-  color: #777;
+.hero-title{
+  font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 52px;
+    margin: 35px 0 50px;
 }
 
 .search-input-container button {
-  width: 60px;
-  height: 48px; /* Ajusta la altura del botón para coincidir con el input */
+  padding: 1rem 2rem;
+  margin-left: 10px;
   background-color: #0053B3;
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 4px;
+  color: white;
+  font-size: 1.4rem;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   transition: background-color 0.3s;
 }
 
@@ -466,123 +402,27 @@ body {
   background-color: #003d84;
 }
 
-.search-input-container .search-icon {
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  border: 2px solid white;
-  border-radius: 50%;
-  position: relative;
-}
-
-.search-input-container .search-icon::after {
-  content: "";
-  position: absolute;
-  top: 13px;
-  left: 13px;
-  width: 10px;
-  height: 2px;
-  background-color: white;
-  transform: rotate(45deg);
-  transform-origin: 0 0;
-}
-
-/* Dropdown de resultados */
-.input-search-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-height: 300px;
-  overflow-y: auto;
-  background-color: white;
-  border: 1px solid #e0e0e0;
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-  z-index: 10;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.input-search-options {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.input-search-option {
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.input-search-option:last-child {
-  border-bottom: none;
-}
-
-.input-search-option:hover {
-  background-color: #f5f5f5;
-}
-
-.highlighted-char {
-  font-weight: bold;
-  color: #0053B3;
-}
-
-/* Estilos adicionales para el fondo */
-.search-hero-section {
-  background-size: cover;
-  background-position: center;
-  padding: 3rem 1rem;
-  position: relative;
-}
-
-.search-hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 0;
-}
-
-.search-section {
-  position: relative;
-  z-index: 1;
-}
-
-.search-button {
-  font-family: "Poppins", sans-serif;
-  border: none;
-  font-weight: 600;
-  padding: 1rem;
-  margin: 0 auto;
-  width: 50%;
-  display: block;
-  border-radius: 4px;
-  background: #0047AB;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
 /* Estilos para dispositivos móviles */
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 2rem;
-  }
-
   .option-button {
-    padding: 0.75rem 0.5rem;
-    font-size: 0.9rem;
+    padding: 0.75rem;
+    font-size: 1.4rem;
   }
 
-  .search-button {
-    padding: 0.75rem 0.5rem;
-    font-size: 0.9rem;
+
+  .hero-title{
+    font-weight: 700;
+      font-family: "Poppins", sans-serif;
+      color: white;
+      text-align: center;
+      letter-spacing: 2px;
+      font-size: 30px;
+      margin: 35px 0 35px;
+  }
+
+  .search-section {
+    width: 90%;
+    margin: 0 auto; /* Esto centra el contenedor horizontalmente */
   }
 
   .search-input-container input {
@@ -590,84 +430,9 @@ body {
   }
 
   .search-input-container button {
-    width: 40px;
-    height: 48px;
+    padding: 0.75rem 1.5rem;
   }
 }
-
-/* Estilos para las páginas */
-.arriendo-page,
-.comprar-page,
-.contacto-page {
-  width: 100%;
-  min-height: 100vh;
-}
-
-.arriendo-main,
-.comprar-main,
-.contacto-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.properties-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-/* Estilos para el formulario de contacto */
-.contact-form-container {
-  font-family: "Poppins", sans-serif;
-  max-width: 600px;
-  margin: 2rem auto;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.form-input,
-.form-textarea {
-  padding: 0.75rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-}
-
-.form-textarea {
-  min-height: 150px;
-  resize: vertical;
-}
-
-.form-submit-button {
-  padding: 1rem;
-  background-color: var(--color-primary);
-  color: white;
-  border: none;
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.form-submit-button:hover {
-  background-color: var(--color-primary-hover);
-}
-
-
-
 
 
 
@@ -745,6 +510,23 @@ body {
 
 
 /* ===== CARROUSEL CARDS ===== */
+
+
+.hero-section{
+  background-image: url('./img/banner.jpg'); /* Ruta relativa desde src */
+  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 2rem;
+    width: 100%;
+    max-width: 100%;
+    height: 350px;
+}
+
+
+
+
 
 
 
@@ -941,6 +723,19 @@ body {
     text-decoration: none;
     font-size: 12px;
   }
+
+
+  .hero-section{
+    background-image: url('./img/banner.jpg'); /* Ruta relativa desde src */
+    padding: 1rem;
+    height: 290px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+ 
+  
+  
 
 
   .section-title {
