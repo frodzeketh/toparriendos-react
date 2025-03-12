@@ -5,4 +5,5 @@ deployment:
     - git pull origin main
     - npm install
     - npm run build
-    - cp -r build/* $HOME/public_html/
+    - rsync -av --delete build/ $HOME/public_html/
+    - cp build/favicon.ico $HOME/public_html/favicon.ico
