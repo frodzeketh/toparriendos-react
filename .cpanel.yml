@@ -1,0 +1,8 @@
+deployment:
+  tasks:
+    - export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+    - cd $HOME/repositories/toparriendos-react
+    - git pull origin main
+    - npm install
+    - npm run build
+    - cp -r build/* $HOME/public_html/
