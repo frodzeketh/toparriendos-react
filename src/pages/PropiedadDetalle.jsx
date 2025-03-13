@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { dbPropiedades } from "../firebase"; // Asegúrate de importar dbPropiedades
+import { Swiper, SwiperSlide } from "swiper/react"; // Importa Swiper y SwiperSlide
+import { Navigation, Pagination } from "swiper/modules"; // Importa módulos de Swiper
+import "swiper/swiper-bundle.css"; // Importa los estilos de Swiper
 import "../global.css";
 
 const PropiedadDetalle = () => {
@@ -75,60 +78,27 @@ const PropiedadDetalle = () => {
         </div>
       </div>
 
-      {/* Carrusel */}
-      <div id="carouselExampleIndicators" className="carousel slide mx-auto p-3" style={{ maxWidth: "600px" }}>
-        <div className="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="0"
-            className="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-        </div>
-        <div className="carousel-inner">
+      {/* Carrusel con Swiper */}
+      <div className="mx-auto p-3" style={{ maxWidth: "600px" }}>
+        <Swiper
+          modules={[Navigation, Pagination]} // Módulos de Swiper
+          spaceBetween={0} // Espacio entre slides
+          slidesPerView={1} // Número de slides visibles
+          navigation // Habilita la navegación (flechas)
+          pagination={{ clickable: true }} // Habilita los indicadores (puntos)
+          loop // Habilita el modo loop (infinito)
+        >
           {propiedad.imagenes.map((img, index) => (
-            <div key={index} className={`carousel-item ${index === 0 ? "active" : ""}`}>
+            <SwiperSlide key={index}>
               <img
                 src={img}
                 className="d-block w-100 img-thumbnail"
                 alt={`Imagen ${index + 1}`}
                 onClick={(e) => openModal(e.target)}
               />
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev"
-        >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next"
-        >
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
+        </Swiper>
       </div>
 
       <div className="nofunca">
@@ -141,8 +111,8 @@ const PropiedadDetalle = () => {
                 {propiedad.direccion || "Av. Libertador Bernardo O'Higgins 1000, Santiago Centro"}
               </p>
               <p className="card-alquiler-location">
-  + Gastos comunes aproximados ${propiedad.gastosComunes || "70.000"}
-</p>
+                + Gastos comunes aproximados ${propiedad.gastosComunes || "70.000"}
+              </p>
               <div className="card-alquiler-icons">
                 {/* Íconos */}
                 <div>

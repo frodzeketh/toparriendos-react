@@ -1,0 +1,1 @@
+rsync -avz --delete ./build/ toparrie@toparriendos.cl:~/public_html/

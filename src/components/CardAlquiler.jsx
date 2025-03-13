@@ -1,6 +1,9 @@
 // src/components/CardAlquiler.jsx
 import React from "react";
 import { Link } from "react-router-dom"; // Importa Link desde react-router-dom
+import { Swiper, SwiperSlide } from "swiper/react"; // Importa Swiper y SwiperSlide
+import { Navigation, Pagination } from "swiper/modules"; // Importa módulos de Swiper
+import "swiper/swiper-bundle.css"; // Importa los estilos de Swiper
 import "../global.css";
 
 const CardAlquiler = ({ propiedad }) => {
@@ -21,44 +24,26 @@ const CardAlquiler = ({ propiedad }) => {
       {/* Usa Link en lugar de <a> para la navegación */}
       <Link to={`/propiedad/${propiedad.id}`} className="a-none">
         <div className="card-alquiler">
-          {/* Carrusel de imágenes */}
-          <div id={`carouselExample${propiedad.id}`} className="carousel slide" data-bs-ride="carousel">
-            <div className="carousel-inner">
-              {imagenes.map((img, index) => (
-                <div
-                  key={index}
-                  className={`carousel-item ${index === 0 ? "active" : ""}`}
-                >
-                  <img
-                    src={img}
-                    className="d-block w-100 card-alquiler-img"
-                    alt={`Propiedad ${index + 1}`}
-                  />
-                </div>
-              ))}
-            </div>
-            {/* Controles del carrusel */}
-            <button
-              className="carousel-control-prev"
-              type="button"
-              data-bs-target={`#carouselExample${propiedad.id}`}
-              data-bs-slide="prev"
-            >
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button
-              className="carousel-control-next"
-              type="button"
-              data-bs-target={`#carouselExample${propiedad.id}`}
-              data-bs-slide="next"
-            >
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Next</span>
-            </button>
-          </div>
+          {/* Carrusel de imágenes con Swiper */}
+          <Swiper
+            modules={[Navigation, Pagination]} // Módulos de Swiper
+            spaceBetween={0} // Espacio entre slides
+            slidesPerView={1} // Número de slides visibles
+            navigation // Habilita la navegación (flechas)
+            pagination={{ clickable: true }} // Habilita los indicadores (puntos)
+            loop // Habilita el modo loop (infinito)
+          >
+            {imagenes.map((img, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={img}
+                  alt={`Propiedad ${index + 1}`}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-          {/* Contenido de la card */}
+          {/* Resto del contenido de la tarjeta */}
           <div className="card-alquiler-content">
             <h2 className="card-alquiler-header">{propiedad.price} CLP</h2>
             <p className="card-alquiler-location">

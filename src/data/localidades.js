@@ -24,6 +24,7 @@ export const localidades = [
   "San Bernardo, RM (Metropolitana)",
   "Quilicura, RM (Metropolitana)",
   
+  "Quinta Normal, RM (Metropolitana",
   "La Pintana, RM (Metropolitana)",
   "San Ramón, RM (Metropolitana)",
   "Renca, RM (Metropolitana)",
